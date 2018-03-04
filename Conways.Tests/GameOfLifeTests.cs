@@ -87,7 +87,7 @@ namespace Conways.Tests
             Assert.Equal(game.Neighbours(new[] { 0, 0 }), candidates);
         }
 
-        [Fact(Skip = "Guiding test")]
+        [Fact]
         public void It_ticks_with_a_birth()
         {
             var seed = new List<int[]> { new[] { 2, 0 }, new[] { 1, 1 }, new[] { 2, 1 } };

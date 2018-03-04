@@ -75,7 +75,9 @@ namespace Conways
 
         public IEnumerable<int[]> Births()
         {
-            throw new System.NotImplementedException();
+            return BirthCandidates()
+                .Where(candidate => LiveNeighbours(candidate).Count() == 3)
+                .ToList();
         }
 
         public IEnumerable<int[]> BirthCandidates()
@@ -86,7 +88,10 @@ namespace Conways
                 deadWithOneLiveNeighbour.Add(new List<int[]>(DeadNeighbours(cell)));
             }
 
-            return deadWithOneLiveNeighbour.SelectMany(list=>list).Distinct();
+            return deadWithOneLiveNeighbour.SelectMany(list => list)
+                .GroupBy(g => new { X = g[0], Y = g[1] })
+                .Select(g => g.First())
+                .ToList();
         }
     }
 }

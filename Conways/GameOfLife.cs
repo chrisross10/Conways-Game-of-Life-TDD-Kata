@@ -15,7 +15,17 @@ namespace Conways
 
         public IEnumerable<int[]> Tick()
         {
-            return _aliveCells = new List<int[]>();
+            var survivors = new List<int[]>();
+            //foreach (var cell in _aliveCells)
+            //{
+            //    if (LiveNeighbours(cell).Count() == 2 || LiveNeighbours(cell).Count() == 3)
+            //    {
+            //        survivors.Add(cell);
+            //    }
+            //}
+
+            _aliveCells = survivors;
+            return _aliveCells;
         }
     }
 }

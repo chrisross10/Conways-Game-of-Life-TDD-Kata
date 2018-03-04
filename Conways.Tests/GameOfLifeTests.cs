@@ -70,7 +70,7 @@ namespace Conways.Tests
             Assert.Equal(new List<int[]>{ new[] { 2, 0 } }, liveNeighbours);
         }
 
-        [Fact(Skip = "Guiding test")]
+        [Fact]
         public void It_ticks_with_a_survival()
         {
             var seed = new List<int[]> { new[] { 1, 0 }, new[] { 2, 0 }, new[] { 1, 1 }, new[] { 2, 1 } };

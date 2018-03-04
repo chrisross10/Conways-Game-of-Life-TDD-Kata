@@ -4,7 +4,7 @@ namespace Conways
 {
     public class GameOfLife
     {
-        private readonly List<int[]> _aliveCells;
+        private List<int[]> _aliveCells;
 
         public GameOfLife(List<int[]> seed)
         {
@@ -15,7 +15,7 @@ namespace Conways
 
         public IEnumerable<int[]> Tick()
         {
-            return new List<int[]>();
+            return _aliveCells = new List<int[]>();
         }
     }
 }

@@ -13,6 +13,14 @@ namespace Conways.Tests
             var game = new GameOfLife(seed);
             var nextGeneration = game.Tick();
             Assert.Equal(new List<int[]>(), nextGeneration);
+        }
+
+        [Fact]
+        public void It_ticks_with_a_death()
+        {
+            var seed = new List<int[]> { new[] { 1, 0 } };
+            var game = new GameOfLife(seed);
+            game.Tick();
             Assert.Equal(new List<int[]>(), game.AliveCells);
         }
 

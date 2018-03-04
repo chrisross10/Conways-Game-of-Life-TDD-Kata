@@ -25,6 +25,15 @@ namespace Conways.Tests
         }
 
         [Fact(Skip = "Guiding test")]
+        public void It_gets_the_live_neighbours()
+        {
+            var seed = new List<int[]> { new[] { 1, 0 }, new[] { 2, 0 } };
+            var game = new GameOfLife(seed);
+            var liveNeighbours = game.LiveNeighbours(new[] { 1, 0 });
+            Assert.Equal(new List<int[]>{ new[] { 2, 0 } }, liveNeighbours);
+        }
+
+        [Fact(Skip = "Guiding test")]
         public void It_ticks_with_a_survival()
         {
             var seed = new List<int[]> { new[] { 1, 0 }, new[] { 2, 0 }, new[] { 1, 1 }, new[] { 2, 1 } };

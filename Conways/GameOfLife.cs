@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Conways
 {
@@ -26,6 +27,20 @@ namespace Conways
 
             _aliveCells = survivors;
             return _aliveCells;
+        }
+
+        public IEnumerable<int[]> LiveNeighbours(int[] cell)
+        {
+            var liveNeighbours = new List<int[]>();
+            //foreach (var neighbour in Neighbours(cell))
+            //{
+            //    if (_aliveCells.Any(c => c.SequenceEqual(neighbour)))
+            //    {
+            //        liveNeighbours.Add(neighbour);
+            //    }
+            //}
+
+            return liveNeighbours;
         }
     }
 }

@@ -42,5 +42,20 @@ namespace Conways
 
             return liveNeighbours;
         }
+
+        public IEnumerable<int[]> Neighbours(int[] cell)
+        {
+            return new List<int[]>
+            {
+                new[] {0, -1},
+                new[] {1, -1},
+                new[] {2, -1},
+                new[] {0, 0},
+                new[] {2, 0},
+                new[] {0, 1},
+                new[] {1, 1},
+                new[] {2, 1}
+            };
+        }
     }
 }

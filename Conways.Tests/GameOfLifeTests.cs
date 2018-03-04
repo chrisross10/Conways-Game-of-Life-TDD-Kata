@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Conways.Tests
@@ -22,6 +23,24 @@ namespace Conways.Tests
             var game = new GameOfLife(seed);
             game.Tick();
             Assert.Equal(new List<int[]>(), game.AliveCells);
+        }
+
+        [Fact]
+        public void It_gets_the_neighbours()
+        {
+            var seed = new List<int[]> { new[] { 1, 0 } };
+            var game = new GameOfLife(seed);
+            var neighbours = game.Neighbours(new[] { 1, 0 }).ToList();
+            Assert.Equal(8, neighbours.Count);
+            Assert.DoesNotContain(new[] { 1, 0 }, neighbours);
+            Assert.Contains(new[] { 0, -1 }, neighbours);
+            Assert.Contains(new[] { 1, -1 }, neighbours);
+            Assert.Contains(new[] { 2, -1 }, neighbours);
+            Assert.Contains(new[] { 0, 0 }, neighbours);
+            Assert.Contains(new[] { 2, 0 }, neighbours);
+            Assert.Contains(new[] { 0, 1 }, neighbours);
+            Assert.Contains(new[] { 1, 1 }, neighbours);
+            Assert.Contains(new[] { 2, 1 }, neighbours);
         }
 
         [Fact(Skip = "Guiding test")]

@@ -16,7 +16,11 @@ namespace Conways
 
         public IEnumerable<int[]> Tick()
         {
-            _aliveCells = Survivors();
+            _aliveCells = Survivors()
+                .Union(Births())
+                .OrderBy(c => c[0])
+                .ThenBy(c => c[1])
+                .ToList();
             return _aliveCells;
         }
 

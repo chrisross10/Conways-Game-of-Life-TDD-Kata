@@ -41,6 +41,13 @@ namespace Conways
                 .ToList();
         }
 
+        public IEnumerable<int[]> DeadNeighbours(int[] cell)
+        {
+            return Neighbours(cell)
+                .Where(neighbour => !_aliveCells.Any(c => c.SequenceEqual(neighbour)))
+                .ToList();
+        }
+
         public IEnumerable<int[]> Neighbours(int[] cell)
         {
             var deltas = new List<int[]>
@@ -64,6 +71,22 @@ namespace Conways
             }
 
             return neighbours;
+        }
+
+        public IEnumerable<int[]> Births()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<int[]> BirthCandidates()
+        {
+            var deadWithOneLiveNeighbour = new List<List<int[]>>();
+            foreach (var cell in _aliveCells)
+            {
+                deadWithOneLiveNeighbour.Add(new List<int[]>(DeadNeighbours(cell)));
+            }
+
+            return deadWithOneLiveNeighbour.SelectMany(list=>list).Distinct();
         }
     }
 }

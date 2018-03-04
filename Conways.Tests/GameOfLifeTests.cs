@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -67,7 +66,7 @@ namespace Conways.Tests
             var seed = new List<int[]> { new[] { 1, 0 }, new[] { 2, 0 } };
             var game = new GameOfLife(seed);
             var liveNeighbours = game.LiveNeighbours(new[] { 1, 0 });
-            Assert.Equal(new List<int[]>{ new[] { 2, 0 } }, liveNeighbours);
+            Assert.Equal(new List<int[]> { new[] { 2, 0 } }, liveNeighbours);
         }
 
         [Fact]
@@ -77,6 +76,24 @@ namespace Conways.Tests
             var game = new GameOfLife(seed);
             game.Tick();
             Assert.Equal(new List<int[]> { new[] { 1, 0 }, new[] { 2, 0 }, new[] { 1, 1 }, new[] { 2, 1 } }, game.AliveCells);
+        }
+
+        [Fact]
+        public void It_gets_birth_candidates()
+        {
+            var seed = new List<int[]> { new[] { 0, 0 } };
+            var game = new GameOfLife(seed);
+            var candidates = game.BirthCandidates();
+            Assert.Equal(game.Neighbours(new[] { 0, 0 }), candidates);
+        }
+
+        [Fact(Skip = "Guiding test")]
+        public void It_ticks_with_a_birth()
+        {
+            var seed = new List<int[]> { new[] { 2, 0 }, new[] { 1, 1 }, new[] { 2, 1 } };
+            var game = new GameOfLife(seed);
+            var births = game.Births();
+            Assert.Equal(new List<int[]> { new[] { 1, 0 } }, births);
         }
 
         [Fact(Skip = "Guiding test")]

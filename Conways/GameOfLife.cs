@@ -45,17 +45,27 @@ namespace Conways
 
         public IEnumerable<int[]> Neighbours(int[] cell)
         {
-            return new List<int[]>
+            var deltas = new List<int[]>
             {
+                new[] {-1, -1},
                 new[] {0, -1},
                 new[] {1, -1},
-                new[] {2, -1},
-                new[] {0, 0},
-                new[] {2, 0},
+                new[] {-1, 0},
+                new[] {1, 0},
+                new[] {-1, 1},
                 new[] {0, 1},
-                new[] {1, 1},
-                new[] {2, 1}
+                new[] {1, 1}
             };
+
+            var neighbours = new List<int[]>();
+            foreach (var delta in deltas)
+            {
+                var x = cell[0] + delta[0];
+                var y = cell[1] + delta[1];
+                neighbours.Add(new[] { x, y });
+            }
+
+            return neighbours;
         }
     }
 }

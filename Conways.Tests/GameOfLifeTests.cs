@@ -26,7 +26,25 @@ namespace Conways.Tests
         }
 
         [Fact]
-        public void It_gets_the_neighbours()
+        public void It_gets_the_neighbours_of_the_origin()
+        {
+            var seed = new List<int[]> { new[] { 0, 0 } };
+            var game = new GameOfLife(seed);
+            var neighbours = game.Neighbours(new[] { 0, 0 }).ToList();
+            Assert.Equal(8, neighbours.Count);
+            Assert.DoesNotContain(new[] { 0, 0 }, neighbours);
+            Assert.Contains(new[] { -1, -1 }, neighbours);
+            Assert.Contains(new[] { 0, -1 }, neighbours);
+            Assert.Contains(new[] { 1, -1 }, neighbours);
+            Assert.Contains(new[] { -1, 0 }, neighbours);
+            Assert.Contains(new[] { 1, 0 }, neighbours);
+            Assert.Contains(new[] { -1, 1 }, neighbours);
+            Assert.Contains(new[] { 0, 1 }, neighbours);
+            Assert.Contains(new[] { 1, 1 }, neighbours);
+        }
+
+        [Fact]
+        public void It_gets_the_neighbours_of_a_given_cell()
         {
             var seed = new List<int[]> { new[] { 1, 0 } };
             var game = new GameOfLife(seed);

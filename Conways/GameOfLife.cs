@@ -31,16 +31,9 @@ namespace Conways
 
         public IEnumerable<int[]> LiveNeighbours(int[] cell)
         {
-            var liveNeighbours = new List<int[]>();
-            //foreach (var neighbour in Neighbours(cell))
-            //{
-            //    if (_aliveCells.Any(c => c.SequenceEqual(neighbour)))
-            //    {
-            //        liveNeighbours.Add(neighbour);
-            //    }
-            //}
-
-            return liveNeighbours;
+            return Neighbours(cell)
+                .Where(neighbour => _aliveCells.Any(c => c.SequenceEqual(neighbour)))
+                .ToList();
         }
 
         public IEnumerable<int[]> Neighbours(int[] cell)

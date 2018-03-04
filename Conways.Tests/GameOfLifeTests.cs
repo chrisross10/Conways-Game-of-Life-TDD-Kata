@@ -61,7 +61,7 @@ namespace Conways.Tests
             Assert.Contains(new[] { 2, 1 }, neighbours);
         }
 
-        [Fact(Skip = "Guiding test")]
+        [Fact]
         public void It_gets_the_live_neighbours()
         {
             var seed = new List<int[]> { new[] { 1, 0 }, new[] { 2, 0 } };

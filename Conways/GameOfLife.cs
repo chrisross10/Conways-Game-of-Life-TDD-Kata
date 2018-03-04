@@ -18,8 +18,8 @@ namespace Conways
         {
             _aliveCells = Survivors()
                 .Union(Births())
-                .OrderBy(c => c[0])
-                .ThenBy(c => c[1])
+                .OrderBy(c => c[1])
+                .ThenBy(c => c[0])
                 .ToList();
             return _aliveCells;
         }
